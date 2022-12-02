@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/typescript.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Herman Miller</title>
+</head>
+<body>
+	<div id="app">
+		<header>
+			<div class="logo">
+				<a href="index.html">Herman</a>
+			</div>
+
+			<div class="cart">
+				<button>
+					<img src="./src/assets/icons/cart.svg" alt="panier">
+					<span class="quantity center"></span>
+				</button>
+			</div>
+		</header>
+
+		<main class="center">
+			<div class="photos">
+				<div class="img-selected">
+					<img src="./src/assets/images/chair_right.webp" alt="">
+				</div>
+
+				<div class="box-thumbs">
+					<div class="thumb">
+						<img src="./src/assets/images/chair_right.webp" alt="">
+					</div>
+					<div class="thumb">
+						<img src="./src/assets/images/chair_back_right_side.webp" alt="">
+					</div>
+					<div class="thumb">
+						<img src="./src/assets/images/chair_back.webp" alt="">
+					</div>
+					<div class="thumb">
+						<img src="./src/assets/images/chair_face.webp" alt="">
+					</div>
+				</div>
+			</div>
+
+			<div class="description center">
+				<div class="card">
+					<h1 class="name">HERMAN MILLER EMBODY X</h1>
+
+					<div class="price">
+						<span class="current-price">1 295,50€</span>
+						<span class="old-price">1 730,99€</span>
+					</div>
+
+					<div class="quantity">
+						<button class="center btn-quantity" data-action="dec">
+							<span>-</span> 
+						</button>
+
+						<input type="number" id="quantity" min="1" max="10" value="1" readonly>
+
+						<button class="center btn-quantity" data-action="inc">
+							<span>+</span> 
+						</button>
+					</div>
+
+					<p class="delivery">La livraison est estimée à 2 semaines</p>
+
+					<button class="add-cart">
+						<span>Ajouter au panier</span>
+					</button>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
