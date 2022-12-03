@@ -2,7 +2,7 @@
 
 
 $color-primary: #242424;
-$color-second: #db596a;
+$color-second: #4884a4;
 $font-familly-title: 'Josefin Sans';
 $raduis: 3px;
 $transition-time: 200ms;
@@ -199,7 +199,7 @@ main {
                 font-weight: 500;
 
                 .current-price {
-                    color: $color-second;
+                    color: #db596a;
                     padding-right: 0.5rem;
                 }
 
@@ -249,7 +249,7 @@ main {
                         border-radius: $raduis;
 
                         &.black-blue {
-                            background-image: linear-gradient(45deg, $color-primary 50%, #306481 50%);
+                            background-image: linear-gradient(45deg, $color-primary 50%, $color-second 50%);
                         }
 
                         &.black {
@@ -281,7 +281,7 @@ main {
 
                         &.black-blue {
                             color: white;
-                            background-image: linear-gradient(to right, $color-primary 50%, #306481 50%);
+                            background-image: linear-gradient(to right, $color-primary 50%, $color-second 50%);
                         }
 
                         &.black {
@@ -351,7 +351,7 @@ main {
             button.add-cart {
                 align-self: flex-start;
                 border-radius: $raduis;
-                background-color: $color-second;
+                background-color: #4884a4;
                 border: none;
                 font-size: clamp(1.2rem, 2vw, 1.35rem);
                 font-family: inherit;
