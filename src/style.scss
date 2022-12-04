@@ -29,8 +29,8 @@ body {
     height: 100vh;
     background: linear-gradient(to right, $color-primary 50%, white 50%);
 
-    @media screen and (max-width: 800px) {
-        background: linear-gradient(to top, white 50%,  $color-primary 50%) no-repeat;
+    @media screen and (max-width: 850px) {
+        background: none;
     }
 }
 
@@ -39,30 +39,6 @@ body {
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
-
-    @media screen and (max-width: 800px) {
-        grid-template-columns: 1fr;
-
-        header .cart svg {
-            fill: white;
-        }
-
-        main {
-            flex-direction: column;
-            gap: 2rem;
-
-            .card {
-                align-items: center;
-
-                .add-cart {
-                    align-self: center;
-                }
-            }
-        }
-    }
 }
 
 a {
@@ -83,20 +59,27 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 50px;
+    padding-inline: 2rem;
+
+    @media screen and (max-width: 850px) {
+        background-color: $color-primary;
+
+        .cart button svg {
+            fill: white;
+        }
+    }
 
     .logo {
         font-family: $font-familly-title;
         font-style: italic;
 
         font-size: 2.5rem;
-        padding: 1rem;
         letter-spacing: 1px;
         color: white;
     }
 
     .cart {
-        padding: 1rem;
-
         button {
             background: none;
             padding: 0;
@@ -131,252 +114,374 @@ header {
         }
     }
 }
+
 /* ------------ MAIN ------------ */
 main {
-    grid-column: 1 / 3;
-    @extend %center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-    .photos,
-    .description {
-        flex-basis: 50%;
+    @media screen and (max-width: 850px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+
+        section {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        section.main {
+
+            .photos {
+                background-color: $color-primary;
+            }
+
+            .buy {
+                margin-bottom: 2rem;
+            }
+        }
+
+        section.description {
+            .chair-dimensions {
+                background-color: $color-primary;
+                min-width: 100%;
+                flex-grow: 1;
+
+                img {
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .card {
+            align-items: center;
+
+            button.add-cart {
+                margin: 0 auto;
+            }
+        }
     }
 
-    .photos {
+    section {
         display: flex;
-        align-items: center;
-        flex-direction: column;
+        min-height: calc(100vh - 50px);
 
-        .img-selected {
-            max-width: 350px;
-            min-width: 200px;
+        .photos,
+        .buy,
+        .photo,
+        .box-details {
+            flex-basis: 50%;
+        }
+    }
+
+    section.main {
+        grid-column: 1 / 3;
+
+        .photos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            .img-selected {
+                max-width: 350px;
+                min-width: 200px;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .box-thumbs {
+                display: flex;
+                gap: 1rem;
+
+                .thumb {
+                    max-width: 80px;
+                    cursor: pointer;
+
+                    img {
+                        width: 100%;
+                        aspect-ratio: 2 / 3;
+                        object-fit: contain;
+                    }
+                }
+            }
+        }
+
+        .buy {
+            @extend %center;
+
+            .card {
+                max-width: 500px;
+                display: flex;
+                flex-direction: column;
+                gap: 1.7rem;
+
+                .name {
+                    font-family: $font-familly-title;
+                    font-style: italic;
+                    font-size: clamp(2rem, 3vw, 3rem);
+                    line-height: 1.2;
+                    position: relative;
+                    color: $color-primary;
+
+                    background-image: linear-gradient(to bottom, transparent 50%, $color-second 50%);
+                    padding-inline: 0.3rem;
+                }
+
+                .price {
+                    font-size: clamp(1.25rem, 2vw, 1.5rem);
+                    font-weight: 500;
+
+                    .current-price {
+                        color: #db596a;
+                        padding-right: 0.5rem;
+                    }
+
+                    .old-price {
+                        text-decoration: line-through;
+                    }
+                }
+
+                .select-color {
+                    min-width: 200px;
+
+                    &.active {
+                        .options {
+                            display: block;
+                        }
+
+                        .select-button svg {
+                            transform: rotate(-180deg);
+                        }
+                    }
+
+                    .select-button {
+                        width: 100%;
+                        height: 40px;
+                        padding: 1rem;
+                        font-size: clamp(1rem, 2vw, 1.3rem);
+                        font-weight: 500;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        border: none;
+                        background: none;
+                        border-radius: $raduis;
+                        box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.1);
+                        cursor: pointer;
+
+                        svg {
+                            width: 25px;
+                            transition: all $transition-time;
+                        }
+
+                        .selected-color {
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                        }
+
+                        .color {
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: $raduis;
+
+                            &.black-blue {
+                                background-image: linear-gradient(45deg, $color-primary 50%, $color-second 50%);
+                            }
+
+                            &.black {
+                                background-color: $color-primary;
+                            }
+                        }
+                    }
+
+                    .options {
+                        display: none;
+
+                        padding: 1rem;
+                        margin-top: 1rem;
+                        background-color: white;
+                        box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.1);
+                        border-radius: $raduis;
+                        cursor: pointer;
+
+                        .option {
+                            padding: 1rem;
+                            list-style: none;
+                            border-radius: $raduis;
+                            font-size: clamp(1rem, 2vw, 1.2rem);
+                            transition: background-color $transition-time;
+
+                            &:nth-child(2n) {
+                                margin-top: 0.7rem;
+                            }
+
+                            &.black-blue {
+                                color: white;
+                                background-image: linear-gradient(to right, $color-primary 50%, $color-second 50%);
+                            }
+
+                            &.black {
+                                color: white;
+                                background-color: $color-primary;
+                            }
+                        }
+                    }
+                }
+
+                .quantity {
+                    display: flex;
+
+                    input {
+                        width: 40px;
+                        font-size: 1.8rem;
+                        appearance: none;
+                        appearance: textfield; // Firefox
+                        border: none;
+                        text-align: center;
+                        outline: none;
+
+                        // Chrome
+                        &::-webkit-inner-spin-button,
+                        &::-webkit-outer-spin-button {
+                            appearance: none;
+                        }
+                    }
+
+                    button {
+                        @extend %center;
+                        width: 30px;
+                        height: 30px;
+                        padding: 1rem;
+                        border-radius: 50%;
+
+                        border: 2px solid $color-primary;
+                        background: none;
+                        cursor: pointer;
+                        transition: all $transition-time;
+
+                        &:hover {
+                            background-color: $color-primary;
+
+                            span {
+                                color: white;
+                            }
+                        }
+
+                        span {
+                            font-size: 1.5rem;
+                            color: black;
+                            transition: all $transition-time;
+                        }
+
+                        @media screen and (max-width: 850px) {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+
+                .delivery {
+                    font-size: clamp(1rem, 2vw, 1.2rem);
+                }
+
+                button.add-cart {
+                    align-self: flex-start;
+                    border-radius: $raduis;
+                    background-color: #4884a4;
+                    border: none;
+                    font-size: clamp(1.2rem, 2vw, 1.35rem);
+                    font-family: inherit;
+                    cursor: pointer;
+
+                    &:hover span {
+                        transform: translate(-5px, -5px);
+                        background-color: $color-primary;
+                        color: white;
+                    }
+
+                    &:active span {
+                        transform: translate(0, 0);
+                    }
+
+                    span {
+                        display: inline-block;
+                        padding: 1rem;
+                        border-radius: $raduis;
+                        border: 2px solid black;
+                        background-color: white;
+                        transition:
+                            transform $transition-time ease-out,
+                            color $transition-time ease-out,
+                            background-color $transition-time ease-out;
+                    }
+                }
+            }
+        }
+    }
+
+    section.description {
+        grid-column: 1 / 3;
+
+        .chair-dimensions {
+            width: 50%;
+            @extend %center;
+            flex-direction: column;
+            gap: 2rem;
+
+            h2 {
+                font-size: clamp(2rem, 3vw, 3rem);
+                color: white;
+            }
 
             img {
                 width: 100%;
             }
         }
 
-        .box-thumbs {
-            display: flex;
-            gap: 1rem;
+        .box-details {
+            @extend %center;
+            margin-bottom: 2rem;
 
-            .thumb {
-                max-width: 80px;
-                cursor: pointer;
+            .menu {
+                max-width: 500px;
+                height: 400px;
+                padding-inline: 1.5rem;
+                @extend %center;
+                flex-direction: column;
+                gap: 1.5rem;
 
-                img {
-                    width: 100%;
-                    aspect-ratio: 2 / 3;
-                    object-fit: contain;
-                }
-            }
-        }
-    }
-
-    .description {
-        @extend %center;
-        margin-bottom: 1.5rem;
-
-        .card {
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            gap: 1.7rem;
-
-            .name {
-                font-family: $font-familly-title;
-                font-style: italic;
-                font-size: clamp(2rem, 3vw, 3rem);
-                line-height: 1.2;
-                position: relative;
-                color: $color-primary;
-
-                background-image: linear-gradient(to bottom, transparent 50%, $color-second 50%);
-                padding-inline: 0.3rem;
-            }
-
-            .price {
-                font-size: clamp(1.25rem, 2vw, 1.5rem);
-                font-weight: 500;
-
-                .current-price {
-                    color: #db596a;
-                    padding-right: 0.5rem;
-                }
-
-                .old-price {
-                    text-decoration: line-through;
-                }
-            }
-
-            .select-color {
-                min-width: 200px;
-
-                &.active {
-                    .options { display: block; };
-                    .select-button svg { transform: rotate(-180deg); }
-                }
-
-                .select-button {
-                    width: 100%;
-                    height: 40px;
-                    padding: 1rem;
-                    font-size: clamp(1rem, 2vw, 1.3rem);
-                    font-weight: 500;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    border: none;
-                    background: none;
+                .detail {
+                    height: 60px;
+                    padding-inline: 1rem;
+                    font-size: clamp(1.2rem, 2vw, 1.4rem);
                     border-radius: $raduis;
                     box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.1);
-                    cursor: pointer;
+                    overflow: hidden;
+                    transition: flex-grow $transition-time ease-out;
 
-                    svg {
-                        width: 25px;
-                        transition: all $transition-time;
+                    &.grow-active {
+                        flex-grow: 1;
                     }
 
-                    .selected-color {
+                    .header {
                         display: flex;
                         align-items: center;
                         gap: 1rem;
-                    }
+                        height: 60px;
+                        cursor: pointer;
+                        background: none;
+                        border: none;
+                        width: 100%;
 
-                    .color {
-                        display: inline-block;
-                        width: 20px;
-                        height: 20px;
-                        border-radius: $raduis;
-
-                        &.black-blue {
-                            background-image: linear-gradient(45deg, $color-primary 50%, $color-second 50%);
-                        }
-
-                        &.black {
-                            background-color: $color-primary;
+                        img {
+                            width: 40px;
+                            aspect-ratio: 3/2;
                         }
                     }
-                }
-
-                .options {
-                    display: none;
-
-                    padding: 1rem;
-                    margin-top: 1rem;
-                    background-color: white;
-                    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.1);
-                    border-radius: $raduis;
-                    cursor: pointer;
-
-                    .option {
-                        padding: 1rem;
-                        list-style: none;
-                        border-radius: $raduis;
-                        font-size: clamp(1rem, 2vw, 1.2rem);
-                        transition: background-color $transition-time;
-
-                        &:nth-child(2n) {
-                            margin-top: 0.7rem;
-                        }
-
-                        &.black-blue {
-                            color: white;
-                            background-image: linear-gradient(to right, $color-primary 50%, $color-second 50%);
-                        }
-
-                        &.black {
-                            color: white;
-                            background-color: $color-primary;
-                        }
-                    }
-                }
-            }
-
-            .quantity {
-                display: flex;
-
-                input {
-                    width: 40px;
-                    font-size: 1.8rem;
-                    appearance: none;
-                    appearance: textfield; // Firefox
-                    border: none;
-                    text-align: center;
-                    outline: none;
-
-                    // Chrome
-                    &::-webkit-inner-spin-button,
-                    &::-webkit-outer-spin-button {
-                        appearance: none;
-                    }
-                }
-
-                button {
-                    @extend %center;
-                    width: 30px;
-                    height: 30px;
-                    padding: 1rem;
-                    border-radius: 50%;
-
-                    border: 2px solid $color-primary;
-                    background: none;
-                    cursor: pointer;
-                    transition: all $transition-time;
-
-                    &:hover {
-                        background-color: $color-primary;
-
-                        span {
-                            color: white;
-                        }
-                    }
-
-                    span {
-                        font-size: 1.5rem;
-                        color: black;
-                        transition: all $transition-time;
-                    }
-
-                    @media screen and (max-width: 850px) {
-                        width: 20px;
-                        height: 20px;
-                    }
-                }
-            }
-
-            .delivery {
-                font-size: clamp(1rem, 2vw, 1.2rem);
-            }
-
-            button.add-cart {
-                align-self: flex-start;
-                border-radius: $raduis;
-                background-color: #4884a4;
-                border: none;
-                font-size: clamp(1.2rem, 2vw, 1.35rem);
-                font-family: inherit;
-                cursor: pointer;
-
-                &:hover span {
-                    transform: translate(-5px, -5px);
-                    background-color: $color-primary;
-                    color: white;
-                }
-
-                &:active span {
-                    transform: translate(0, 0);
-                }
-
-                span {
-                    display: inline-block;
-                    padding: 1rem;
-                    border-radius: $raduis;
-                    border: 2px solid black;
-                    background-color: white;
-                    transition:
-                        transform $transition-time ease-out,
-                        color $transition-time ease-out,
-                        background-color $transition-time ease-out;
                 }
             }
         }

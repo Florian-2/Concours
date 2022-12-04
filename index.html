@@ -26,76 +26,128 @@
 		</header>
 
 		<main>
-			<div class="photos">
-				<div class="img-selected">
-					<img src="./src/assets/images/chair_right.webp" alt="">
+			<section class="main">
+				<div class="photos">
+					<div class="img-selected">
+						<img src="./src/assets/images/chair_right.webp" alt="Photo zoomer du siège">
+					</div>
+
+					<div class="box-thumbs">
+						<div class="thumb">
+							<img src="./src/assets/images/chair_right.webp" alt="Siège tourné vers la droite">
+						</div>
+						<div class="thumb">
+							<img src="./src/assets/images/chair_back_right_side.webp" alt="Arrière du siège tourné vers la droite">
+						</div>
+						<div class="thumb">
+							<img src="./src/assets/images/chair_back.webp" alt="Face arrière du siège">
+						</div>
+						<div class="thumb">
+							<img src="./src/assets/images/chair_face.webp" alt="Face avant du siège">
+						</div>
+					</div>
 				</div>
 
-				<div class="box-thumbs">
-					<div class="thumb">
-						<img src="./src/assets/images/chair_right.webp" alt="">
-					</div>
-					<div class="thumb">
-						<img src="./src/assets/images/chair_back_right_side.webp" alt="">
-					</div>
-					<div class="thumb">
-						<img src="./src/assets/images/chair_back.webp" alt="">
-					</div>
-					<div class="thumb">
-						<img src="./src/assets/images/chair_face.webp" alt="">
+				<div class="buy">
+					<div class="card">
+						<h1 class="name">HERMAN MILLER EMBODY X</h1>
+
+						<div class="price">
+							<span class="current-price">1 295,50€</span>
+							<span class="old-price">1 730,99€</span>
+						</div>
+
+						<div class="select-color">
+							<button class="select-button">
+								<span class="selected-color">
+									<span class="color-text">Noir / Bleu Cyan</span>
+									<span class="color black-blue"></span>
+								</span>
+
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+									<path fill="#000000"
+										d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z" />
+								</svg>
+							</button>
+
+							<ul class="options">
+								<li class="option black-blue" data-color="black-blue">Noir / Bleu Cyan</li>
+								<li class="option black" data-color="black">Noir</li>
+							</ul>
+						</div>
+
+						<div class="quantity">
+							<button class="btn-quantity" data-action="dec">
+								<span>-</span>
+							</button>
+
+							<input type="number" id="quantity" min="1" max="10" value="1" readonly>
+
+							<button class="btn-quantity" data-action="inc">
+								<span>+</span>
+							</button>
+						</div>
+
+						<p class="delivery">La livraison est estimée à 2 semaines</p>
+
+						<button class="add-cart">
+							<span>Ajouter au panier</span>
+						</button>
 					</div>
 				</div>
-			</div>
+			</section>
 
-			<div class="description">
-				<div class="card">
-					<h1 class="name">HERMAN MILLER EMBODY X</h1>
-
-					<div class="price">
-						<span class="current-price">1 295,50€</span>
-						<span class="old-price">1 730,99€</span>
-					</div>
-
-					<div class="select-color">
-						<button class="select-button">
-							<span class="selected-color">
-								<span class="color-text">Noir / Bleu Cyan</span>
-								<span class="color black-blue"></span>
-							</span>
-
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-								<path fill="#000000"
-									d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z" />
-							</svg>
-						</button>
-
-						<ul class="options">
-							<li class="option black-blue" data-color="black-blue">Noir / Bleu Cyan</li>
-							<li class="option black" data-color="black">Noir</li>
-						</ul>
-					</div>
-
-					<div class="quantity">
-						<button class="btn-quantity" data-action="dec">
-							<span>-</span>
-						</button>
-
-						<input type="number" id="quantity" min="1" max="10" value="1" readonly>
-
-						<button class="btn-quantity" data-action="inc">
-							<span>+</span>
-						</button>
-					</div>
-
-					<p class="delivery">La livraison est estimée à 2 semaines</p>
-
-					<button class="add-cart">
-						<span>Ajouter au panier</span>
-					</button>
+			<section class="description">
+				<div class="chair-dimensions">
+					<h2>Spécifications</h2>
+					<img src="./src/assets/images/chair_dimensions.webp" alt="Dimensions du siège">
 				</div>
-			</div>
 
+				<div class="box-details">
+					<div class="menu">
+						<div class="detail">
+							<button class="header">
+								<img src="./src/assets/icons/check-circle.svg" alt="Icon check">
+								<p>Garantie</p>
+							</button>
 
+							<div class="main">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nulla tempora amet necessitatibus ipsam libero accusantium at! Beatae assumenda quibusdam, fugit voluptatem praesentium, et delectus iusto nam sed, aspernatur fuga.</p>
+							</div>
+						</div>
+
+						<div class="detail">
+							<button class="header">
+								<img src="./src/assets/icons/construct-outline.svg" alt="Icon outil">
+								<p>Matériaux</p>
+							</button>
+							<div class="main">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nulla tempora amet necessitatibus ipsam libero accusantium at! Beatae assumenda quibusdam, fugit voluptatem praesentium, et delectus iusto nam sed, aspernatur fuga.</p>
+							</div>
+						</div>
+
+						<div class="detail">
+							<button class="header">
+								<img src="./src/assets/icons/info-circle.svg" alt="Icon information">
+								<p>Description du produit</p>
+							</button>
+							<div class="main">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nulla tempora amet necessitatibus ipsam libero accusantium at! Beatae assumenda quibusdam, fugit voluptatem praesentium, et delectus iusto nam sed, aspernatur fuga.</p>
+							</div>
+						</div>
+
+						<div class="detail">
+							<button class="header">
+								<img src="./src/assets/icons/setting.svg" alt="Icon paramètre">
+								<p>Spécifications</p>
+							</button>
+							<div class="main">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nulla tempora amet necessitatibus ipsam libero accusantium at! Beatae assumenda quibusdam, fugit voluptatem praesentium, et delectus iusto nam sed, aspernatur fuga.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</main>
 	</div>
 

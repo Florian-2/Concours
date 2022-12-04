@@ -28,6 +28,12 @@ btnMenu.addEventListener("click", () => colorsMenu.classList.toggle("active"));
 colorsOptions.forEach((li) => li.addEventListener("click", () => setSelectedColor(li)));
 
 
+// ----- Section détails du produit ----- \\
+const headerDetail: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".detail .header");
+
+headerDetail.forEach((detailHeader) => detailHeader.addEventListener("click", () => grow(detailHeader.parentElement as HTMLDivElement)));
+
+
 // ----- Listener  ----- \\
 function setQuantity(btn: HTMLButtonElement) {
     const action = btn.dataset.action;
@@ -58,4 +64,16 @@ function setSelectedColor(li: HTMLLIElement) {
     colorText.textContent = colorSelected;
     colorBloc.classList.remove("black", "black-blue");
     colorBloc.classList.add(`${dataSetColor}`);
+}
+
+function grow(detail: HTMLDivElement) {
+    headerDetail.forEach((dtHeader) => {
+        const currDetail = dtHeader.parentElement as HTMLDivElement;
+
+        if (currDetail.classList.contains("grow-active") && currDetail !== detail) {
+            currDetail.classList.remove("grow-active");
+        }
+    })
+
+    detail.classList.toggle("grow-active");
 }
